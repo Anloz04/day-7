@@ -1,0 +1,36 @@
+
+<!--Get all the countries from the Asia continent /region using the Filter function -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        var request = new XMLHttpRequest(); //XHR object 
+        
+        request.open('GET','https://restcountries.com/v3.1/all',true ); 
+
+        request.send(); 
+        request.onload = function() { 
+            var info = JSON.parse(this.response);
+            console.log(info);
+           
+
+            var res = info.filter((element) => {
+                if (element.region == 'Asia'){
+                    console.log(`Country: ${element.name.common}`); 
+                }
+
+            })
+
+        }
+
+    </script>
+</body>
+</html>
