@@ -1,0 +1,47 @@
+
+<!-- Print the country which uses US Dollars as currency. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+         var request = new XMLHttpRequest() ; // XMLHttpRequest (XHR) objects  - it is used to retrieve data from the given URL - used to interact with the servers
+
+        request.open('GET','https://restcountries.com/v3.1/all',true ); // ( opening the rest countries web )
+
+        request.send(); // sending a request to the URL 
+
+        request.onload = function() {   // loading the function
+
+            var data = JSON.parse(this.response);
+                            // JavaScript Object Notation - JSON - sending some data from the server to the client, so it can be displayed on a web page,
+            console.log(data);
+
+            console.log("Countries which uses US Dollors as currency: ");
+        
+            var res = data.map((element) =>{
+
+                for (var i in element.currencies){
+
+                        if (i == "USD"){
+
+                            console.log(`  ==> ${element.name.common}`);
+                        }
+
+                }
+
+            })
+
+        }
+
+
+    </script>
+</body>
+</html>
