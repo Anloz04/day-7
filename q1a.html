@@ -12,12 +12,14 @@
 <body>
     <script>
     
-        var request = new XMLHttpRequest(); //XHR object 
+        var request = new XMLHttpRequest(); // XMLHttpRequest (XHR) objects  - it is used to retrieve data from the given URL - used to interact with the servers 
         
-        request.open('GET','https://restcountries.com/v3.1/all',true ); 
+        request.open('GET','https://restcountries.com/v3.1/all',true );   // ( opening the rest countries web ) 
 
-        request.send(); 
-        request.onload = function() { 
+        request.send();    // sending a request 
+        
+        request.onload = function() {     // opening a function
+            
             var info = JSON.parse(this.response);
             console.log(info);
            
